@@ -80,4 +80,10 @@ interface ArenaMeta<Location, ItemStack, Vector, Player, Material> {
 
     /** Meta data of the customizing Properties. */
     val customizingMeta : CustomizationMeta
+
+    /** Meta data of the spectator settings when actively spectating a game. */
+    val activeSpectatorMeta : ActiveSpectatorMeta
+
+    /** Meta data of the spectator settings when passively spectating a game. */
+    val passiveSpectatorMeta : PassiveSpectatorMeta
 }
