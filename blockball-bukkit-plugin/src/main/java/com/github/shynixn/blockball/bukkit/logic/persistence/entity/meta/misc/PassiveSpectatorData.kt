@@ -1,6 +1,7 @@
 package com.github.shynixn.blockball.bukkit.logic.persistence.entity.meta.misc
 
 import com.github.shynixn.blockball.api.persistence.entity.meta.misc.PassiveSpectatorMeta
+import com.github.shynixn.blockball.bukkit.logic.business.helper.YamlSerializer
 
 /**
  * Copyright 2017 Shynixn
@@ -33,7 +34,9 @@ import com.github.shynixn.blockball.api.persistence.entity.meta.misc.PassiveSpec
  */
 class PassiveSpectatorData : PassiveSpectatorMeta {
     /** Is the spectator mode available to be used. **/
+    @YamlSerializer.YamlSerialize(orderNumber = 1, value = "enabled")
     override var enabled: Boolean = false
     /** Radius where nearby players receive ingame messages. */
+    @YamlSerializer.YamlSerialize(orderNumber = 2, value = "radius")
     override val radius: Int = 50
 }

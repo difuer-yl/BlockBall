@@ -3,6 +3,7 @@ package com.github.shynixn.blockball.bukkit.logic.persistence.entity.meta.misc
 import com.github.shynixn.blockball.api.business.enumeration.PlaceHolder
 import com.github.shynixn.blockball.api.persistence.entity.basic.StorageLocation
 import com.github.shynixn.blockball.api.persistence.entity.meta.misc.ActiveSpectatorMeta
+import com.github.shynixn.blockball.bukkit.logic.business.helper.YamlSerializer
 import org.bukkit.ChatColor
 import org.bukkit.GameMode
 
@@ -37,15 +38,21 @@ import org.bukkit.GameMode
  */
 class ActiveSpectatorData : ActiveSpectatorMeta {
     /** Is the spectator mode available to be used. **/
+    @YamlSerializer.YamlSerialize(orderNumber = 1, value = "enabled")
     override var enabled: Boolean = true
     /** Joining the spectator mode asking message. */
+    @YamlSerializer.YamlSerialize(orderNumber = 4, value = "join-selection")
     override var joinMessage: MutableList<String> = arrayListOf("Do you want to spectate this match?", ChatColor.LIGHT_PURPLE.toString() + "[Spectate]")
     /** Minecraft gamemode (Survival, Adventure, Creative) the players should be. */
+    @YamlSerializer.YamlSerialize(orderNumber = 2, value = "gamemode")
     override var gamemode: Enum<*> = GameMode.SPECTATOR
     /** Spawnpoint of the player when joining the spectator mode. */
+    @YamlSerializer.YamlSerialize(orderNumber = 3, value = "spawnpoint")
     override var spawnpoint: StorageLocation? = null
     /** List of signs which can be clicked to join the spectator mode. */
+    @YamlSerializer.YamlSerialize(orderNumber = 5, value = "signs")
     override val joinSigns: MutableList<StorageLocation> = ArrayList()
     /** Lines displayed on the sign for joining the spectator mode. */
+    @YamlSerializer.YamlSerialize(orderNumber = 6, value = "sign-lines")
     override var joinSignLines: List<String> = arrayListOf("&lBlockBall", PlaceHolder.ARENA_DISPLAYNAME.placeHolder, ChatColor.LIGHT_PURPLE.toString()+"Spectate", PlaceHolder.ARENA_SUM_CURRENTPLAYERS.placeHolder+'/'+PlaceHolder.ARENA_SUM_MAXPLAYERS.placeHolder)
 }
